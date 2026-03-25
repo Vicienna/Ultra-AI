@@ -1,0 +1,42 @@
+{
+  "entities": {
+    "sessions": {
+      "title": "Chat Session",
+      "description": "A collection of chat sessions for each user.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "description": "The title of the chat session." },
+        "userId": { "type": "string", "description": "The UID of the user who owns the session." },
+        "mode": { "type": "string", "description": "The chat mode used in the session." },
+        "createdAt": { "type": "number", "description": "The timestamp when the session was created." },
+        "updatedAt": { "type": "number", "description": "The timestamp when the session was last updated." }
+      },
+      "required": ["title", "userId", "mode", "createdAt", "updatedAt"]
+    },
+    "messages": {
+      "title": "Message",
+      "description": "A collection of messages within a chat session.",
+      "type": "object",
+      "properties": {
+        "sessionId": { "type": "string", "description": "The ID of the session this message belongs to." },
+        "userId": { "type": "string", "description": "The UID of the user who owns the message." },
+        "role": { "type": "string", "enum": ["user", "assistant", "system"], "description": "The role of the message sender." },
+        "content": { "type": "string", "description": "The content of the message." },
+        "modelId": { "type": "string", "description": "The ID of the model that generated the message (if assistant)." },
+        "timestamp": { "type": "number", "description": "The timestamp when the message was sent." },
+        "thinking": { "type": "string", "description": "The thinking process of the AI model." }
+      },
+      "required": ["sessionId", "userId", "role", "content", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/sessions/{sessionId}": {
+      "schema": "sessions",
+      "description": "User chat sessions."
+    },
+    "/messages/{messageId}": {
+      "schema": "messages",
+      "description": "Messages within sessions."
+    }
+  }
+}

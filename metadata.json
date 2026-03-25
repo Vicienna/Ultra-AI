@@ -1,0 +1,5 @@
+{
+  "name": "Nexus AI Chat",
+  "description": "A multi-model collaborative AI chat platform with real-time thinking and search grounding.",
+  "requestFramePermissions": ["microphone"]
+}
