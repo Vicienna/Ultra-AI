@@ -317,15 +317,21 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <p className="text-[10px] text-muted-foreground truncate">{user?.email}</p>
           </div>
         </div>
-        <Button 
-          variant="ghost" 
-          size="sm" 
-          className="w-full justify-start gap-2 text-muted-foreground hover:text-destructive"
-          onClick={onSignOut}
-        >
-          <LogOut size={16} />
-          {t.signOut}
-        </Button>
+        <div className="mt-4 pt-4 border-t border-border/30 flex flex-col gap-2">
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            className="w-full justify-start gap-2 text-muted-foreground hover:text-destructive"
+            onClick={onSignOut}
+          >
+            <LogOut size={16} />
+            {t.signOut}
+          </Button>
+          <div className="px-2 py-1 flex items-center justify-between">
+            <span className="text-[10px] font-medium text-muted-foreground/50 tracking-widest uppercase">Nexus AI v2.0</span>
+            <span className="text-[10px] font-medium text-primary/40">Vercel Ready</span>
+          </div>
+        </div>
       </div>
     </div>
   );

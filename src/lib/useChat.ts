@@ -80,7 +80,9 @@ export function useChat() {
   const [streamingMessage, setStreamingMessage] = useState<Message | null>(null);
   
   // Settings
-  const [apiKey, setApiKey] = useState(() => localStorage.getItem('nexus_api_key') || '');
+  const [apiKey, setApiKey] = useState(() => 
+    import.meta.env.VITE_GEMINI_API_KEY || localStorage.getItem('nexus_api_key') || ''
+  );
   const [theme, setTheme] = useState<'light' | 'dark'>(() => 
     (localStorage.getItem('nexus_theme') as 'light' | 'dark') || 'dark'
   );
